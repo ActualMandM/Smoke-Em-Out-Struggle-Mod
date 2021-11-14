@@ -62,10 +62,7 @@
 	<assets path="assets/shared" library="shared"/>
 	<assets path="assets/week7" library="week7" />
 
-	<assets path='art/readme.txt' rename='do NOT readme.txt' />
-	<!-- <template path='mods' /> -->
-
-	<assets path="CHANGELOG.md" rename='changelog.txt'/>
+	<assets path="LICENSE" rename='license.txt'/>
 
 	<!-- NOTE FOR FUTURE SELF SINCE FONTS ARE ALWAYS FUCKY 
 		TO FIX ONE OF THEM, I CONVERTED IT TO OTF. DUNNO IF YOU NEED TO
