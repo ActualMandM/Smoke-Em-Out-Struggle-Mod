@@ -52,7 +52,7 @@ class NGio
 					trace('CURRENT NG VERSION: ' + GAME_VER_NUMS);
 					gotOnlineVer = true;
 				}
-		});
+			});
 			call.send();
 		});
 	}

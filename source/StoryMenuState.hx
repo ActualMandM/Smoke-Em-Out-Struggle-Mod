@@ -22,22 +22,15 @@ class StoryMenuState extends MusicBeatState
 {
 	var scoreText:FlxText;
 
-	var weekData:Array<Dynamic> = 
-	[
-		['Headache', 'Nerves', 'Release', 'Fading']
-	];
+	var weekData:Array<Dynamic> = [['Headache', 'Nerves', 'Release', 'Fading']];
 
 	public static var curDifficulty:Int = 1;
 
 	public static var weekUnlocked:Array<Bool> = [true];
 
-	var weekCharacters:Array<Dynamic> = [
-		['garcello', 'bf', 'gf']
-	];
+	var weekCharacters:Array<Dynamic> = [['garcello', 'bf', 'gf']];
 
-	var weekNames:Array<String> = [
-		"SMOKE 'EM OUT STRUGGLE"
-	];
+	var weekNames:Array<String> = ["SMOKE 'EM OUT STRUGGLE"];
 
 	var txtWeekTitle:FlxText;
 
@@ -96,7 +89,7 @@ class StoryMenuState extends MusicBeatState
 		add(grpLocks);
 
 		trace("Line 70");
-		
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);

@@ -208,116 +208,113 @@ class PlayState extends MusicBeatState
 
 		// String for when the game is paused
 		detailsPausedText = "Paused - " + detailsText;
-		
+
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
 		#end
 
 		switch (SONG.song.toLowerCase())
 		{
-		          case 'headache' | 'nerves':
-		          {
-		                  defaultCamZoom = 0.9;
-						  curStage = 'garAlley';
+			case 'headache' | 'nerves':
+				{
+					defaultCamZoom = 0.9;
+					curStage = 'garAlley';
 
-						  var bg:FlxSprite = new FlxSprite(-500, -170).loadGraphic(Paths.image('garStagebg'));
-						  bg.antialiasing = true;
-						  bg.scrollFactor.set(0.7, 0.7);
-						  bg.active = false;
-						  add(bg);
+					var bg:FlxSprite = new FlxSprite(-500, -170).loadGraphic(Paths.image('garStagebg'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.7, 0.7);
+					bg.active = false;
+					add(bg);
 
-						  var bgAlley:FlxSprite = new FlxSprite(-500, -200).loadGraphic(Paths.image('garStage'));
-						  bgAlley.antialiasing = true;
-						  bgAlley.scrollFactor.set(0.9, 0.9);
-						  bgAlley.active = false;
-						  add(bgAlley);
+					var bgAlley:FlxSprite = new FlxSprite(-500, -200).loadGraphic(Paths.image('garStage'));
+					bgAlley.antialiasing = true;
+					bgAlley.scrollFactor.set(0.9, 0.9);
+					bgAlley.active = false;
+					add(bgAlley);
+				}
+			case 'release':
+				{
+					defaultCamZoom = 0.9;
+					curStage = 'garAlleyDead';
 
-					}
-		          case 'release':
-		          {
-		                  defaultCamZoom = 0.9;
-						  curStage = 'garAlleyDead';
+					var bg:FlxSprite = new FlxSprite(-500, -170).loadGraphic(Paths.image('garStagebgAlt'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.7, 0.7);
+					bg.active = false;
+					add(bg);
 
-						  var bg:FlxSprite = new FlxSprite(-500, -170).loadGraphic(Paths.image('garStagebgAlt'));
-						  bg.antialiasing = true;
-						  bg.scrollFactor.set(0.7, 0.7);
-						  bg.active = false;
-						  add(bg);
+					var smoker:FlxSprite = new FlxSprite(0, -290);
+					smoker.frames = Paths.getSparrowAtlas('garSmoke');
+					smoker.setGraphicSize(Std.int(smoker.width * 1.7));
+					smoker.alpha = 0.3;
+					smoker.animation.addByPrefix('garsmoke', "smokey", 13);
+					smoker.animation.play('garsmoke');
+					smoker.scrollFactor.set(0.7, 0.7);
+					add(smoker);
 
-						  var smoker:FlxSprite = new FlxSprite(0, -290);
-						  smoker.frames = Paths.getSparrowAtlas('garSmoke');
-						  smoker.setGraphicSize(Std.int(smoker.width * 1.7));
-						  smoker.alpha = 0.3;
-						  smoker.animation.addByPrefix('garsmoke', "smokey", 13);
-						  smoker.animation.play('garsmoke');
-						  smoker.scrollFactor.set(0.7, 0.7);
-						  add(smoker);
+					var bgAlley:FlxSprite = new FlxSprite(-500, -200).loadGraphic(Paths.image('garStagealt'));
+					bgAlley.antialiasing = true;
+					bgAlley.scrollFactor.set(0.9, 0.9);
+					bgAlley.active = false;
+					add(bgAlley);
 
-						  var bgAlley:FlxSprite = new FlxSprite(-500, -200).loadGraphic(Paths.image('garStagealt'));
-						  bgAlley.antialiasing = true;
-						  bgAlley.scrollFactor.set(0.9, 0.9);
-						  bgAlley.active = false;
-						  add(bgAlley);
+					var corpse:FlxSprite = new FlxSprite(-230, 540).loadGraphic(Paths.image('gardead'));
+					corpse.antialiasing = true;
+					corpse.scrollFactor.set(0.9, 0.9);
+					corpse.active = false;
+					add(corpse);
+				}
+			case 'fading':
+				{
+					defaultCamZoom = 0.9;
+					curStage = 'garAlleyDip';
 
-						  var corpse:FlxSprite = new FlxSprite(-230, 540).loadGraphic(Paths.image('gardead'));
-						  corpse.antialiasing = true;
-						  corpse.scrollFactor.set(0.9, 0.9);
-						  corpse.active = false;
-						  add(corpse);
+					var bg:FlxSprite = new FlxSprite(-500, -170).loadGraphic(Paths.image('garStagebgRise'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.7, 0.7);
+					bg.active = false;
+					add(bg);
 
-					}
-		          case 'fading':
-		          {
-		                  defaultCamZoom = 0.9;
-						  curStage = 'garAlleyDip';
+					var bgAlley:FlxSprite = new FlxSprite(-500, -200).loadGraphic(Paths.image('garStageRise'));
+					bgAlley.antialiasing = true;
+					bgAlley.scrollFactor.set(0.9, 0.9);
+					bgAlley.active = false;
+					add(bgAlley);
 
-						  var bg:FlxSprite = new FlxSprite(-500, -170).loadGraphic(Paths.image('garStagebgRise'));
-						  bg.antialiasing = true;
-						  bg.scrollFactor.set(0.7, 0.7);
-						  bg.active = false;
-						  add(bg);
+					var corpse:FlxSprite = new FlxSprite(-230, 540).loadGraphic(Paths.image('gardead'));
+					corpse.antialiasing = true;
+					corpse.scrollFactor.set(0.9, 0.9);
+					corpse.active = false;
+					add(corpse);
+				}
+			default:
+				{
+					defaultCamZoom = 0.9;
+					curStage = 'stage';
+					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.9, 0.9);
+					bg.active = false;
+					add(bg);
 
-						  var bgAlley:FlxSprite = new FlxSprite(-500, -200).loadGraphic(Paths.image('garStageRise'));
-						  bgAlley.antialiasing = true;
-						  bgAlley.scrollFactor.set(0.9, 0.9);
-						  bgAlley.active = false;
-						  add(bgAlley);
+					var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront'));
+					stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+					stageFront.updateHitbox();
+					stageFront.antialiasing = true;
+					stageFront.scrollFactor.set(0.9, 0.9);
+					stageFront.active = false;
+					add(stageFront);
 
-						  var corpse:FlxSprite = new FlxSprite(-230, 540).loadGraphic(Paths.image('gardead'));
-						  corpse.antialiasing = true;
-						  corpse.scrollFactor.set(0.9, 0.9);
-						  corpse.active = false;
-						  add(corpse);
+					var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
+					stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
+					stageCurtains.updateHitbox();
+					stageCurtains.antialiasing = true;
+					stageCurtains.scrollFactor.set(1.3, 1.3);
+					stageCurtains.active = false;
 
-					}
-		          default:
-		          {
-		                  defaultCamZoom = 0.9;
-		                  curStage = 'stage';
-		                  var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
-		                  bg.antialiasing = true;
-		                  bg.scrollFactor.set(0.9, 0.9);
-		                  bg.active = false;
-		                  add(bg);
-
-		                  var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront'));
-		                  stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-		                  stageFront.updateHitbox();
-		                  stageFront.antialiasing = true;
-		                  stageFront.scrollFactor.set(0.9, 0.9);
-		                  stageFront.active = false;
-		                  add(stageFront);
-
-		                  var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
-		                  stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
-		                  stageCurtains.updateHitbox();
-		                  stageCurtains.antialiasing = true;
-		                  stageCurtains.scrollFactor.set(1.3, 1.3);
-		                  stageCurtains.active = false;
-
-		                  add(stageCurtains);
-		          }
-              }
+					add(stageCurtains);
+				}
+		}
 
 		var gfVersion:String = 'gf';
 
@@ -486,7 +483,7 @@ class PlayState extends MusicBeatState
 					new FlxTimer().start(0.1, function(tmr:FlxTimer)
 					{
 						// FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-					
+
 						new FlxTimer().start(3, function(tmr:FlxTimer)
 						{
 							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
@@ -657,17 +654,17 @@ class PlayState extends MusicBeatState
 						sexycutscene.animation.play('video');
 
 						FlxG.sound.play(Paths.sound('Garcello_Dies'), 1, false, null, true, function()
-							{
-								remove(red);
-								remove(sexycutscene);
-								FlxG.sound.play(Paths.sound('Wind_Fadeout'));
+						{
+							remove(red);
+							remove(sexycutscene);
+							FlxG.sound.play(Paths.sound('Wind_Fadeout'));
 
-								FlxG.camera.fade(FlxColor.WHITE, 5, true, function()
-								{
-									add(dialogueBox);
-									camHUD.visible = true;
-								}, true);
-							});
+							FlxG.camera.fade(FlxColor.WHITE, 5, true, function()
+							{
+								add(dialogueBox);
+								camHUD.visible = true;
+							}, true);
+						});
 					}
 					else
 					{
@@ -896,7 +893,9 @@ class PlayState extends MusicBeatState
 				{
 					swagNote.x += FlxG.width / 2; // general offset
 				}
-				else {}
+				else
+				{
+				}
 			}
 			daBeats += 1;
 		}
@@ -1086,7 +1085,7 @@ class PlayState extends MusicBeatState
 
 		super.onFocus();
 	}
-	
+
 	override public function onFocusLost():Void
 	{
 		#if desktop
@@ -1161,7 +1160,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-		
+
 			#if desktop
 			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
 			#end
@@ -1369,7 +1368,7 @@ class PlayState extends MusicBeatState
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 			// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-			
+
 			#if desktop
 			// Game Over doesn't get his own variable because it's only used here
 			DiscordClient.changePresence("Game Over - " + detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
@@ -1502,7 +1501,6 @@ class PlayState extends MusicBeatState
 
 			if (storyPlaylist.length <= 0)
 			{
-				
 				// FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
 				transIn = FlxTransitionableState.defaultTransIn;
@@ -1538,14 +1536,13 @@ class PlayState extends MusicBeatState
 				if (SONG.song.toLowerCase() == 'eggnog')
 				{
 					var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-					-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+						-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 					blackShit.scrollFactor.set();
 					add(blackShit);
 					camHUD.visible = false;
 
 					FlxG.sound.play(Paths.sound('Lights_Shut_off'));
 				}
-
 
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
