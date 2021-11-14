@@ -53,14 +53,15 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
-	var halloweenLevel:Bool = false;
+	public static var seenCutscene:Bool = false;
+	public static var deathCounter:Int = 0;
+	public static var practiceMode:Bool = false;
 
 	private var vocals:FlxSound;
 
 	private var dad:Character;
 	private var gf:Character;
 	private var boyfriend:Boyfriend;
-	private var garcellotired:Character;
 
 	private var notes:FlxTypedGroup<Note>;
 	private var unspawnNotes:Array<Note> = [];
@@ -445,7 +446,7 @@ class PlayState extends MusicBeatState
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
 
-		if (isStoryMode)
+		if (isStoryMode && !seenCutscene)
 		{
 			switch (curSong.toLowerCase())
 			{
@@ -462,8 +463,6 @@ class PlayState extends MusicBeatState
 
 					new FlxTimer().start(0.1, function(tmr:FlxTimer)
 					{
-						// FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-
 						new FlxTimer().start(3, function(tmr:FlxTimer)
 						{
 							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
@@ -487,6 +486,8 @@ class PlayState extends MusicBeatState
 				default:
 					startCountdown();
 			}
+
+			seenCutscene = true;
 		}
 		else
 		{
@@ -523,9 +524,7 @@ class PlayState extends MusicBeatState
 			remove(black);
 
 			if (SONG.song.toLowerCase() == 'release')
-			{
 				add(red);
-			}
 		}
 
 		new FlxTimer().start(0.1, function(tmr:FlxTimer)
@@ -533,9 +532,7 @@ class PlayState extends MusicBeatState
 			black.alpha -= 0.15;
 
 			if (black.alpha > 0)
-			{
 				tmr.reset(0.1);
-			}
 			else
 			{
 				if (dialogueBox != null)
@@ -563,9 +560,7 @@ class PlayState extends MusicBeatState
 						});
 					}
 					else
-					{
 						add(dialogueBox);
-					}
 				}
 				else
 					startCountdown();
@@ -1111,7 +1106,7 @@ class PlayState extends MusicBeatState
 			trace("User is cheating!");
 		}
 
-		if (health <= 0)
+		if (health <= 0 && !practiceMode)
 		{
 			boyfriend.stunned = true;
 
@@ -1121,6 +1116,8 @@ class PlayState extends MusicBeatState
 
 			vocals.stop();
 			FlxG.sound.music.stop();
+
+			deathCounter += 1;
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -1240,6 +1237,8 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
+		seenCutscene = true;
+		deathCounter = 0;
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
@@ -1351,7 +1350,8 @@ class PlayState extends MusicBeatState
 			score = 200;
 		}
 
-		songScore += score;
+		if (!practiceMode)
+			songScore += score;
 
 		/* if (combo > 60)
 				daRating = 'sick';
@@ -1607,7 +1607,8 @@ class PlayState extends MusicBeatState
 			}
 			combo = 0;
 
-			songScore -= 10;
+			if (!practiceMode)
+				songScore -= 10;
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);

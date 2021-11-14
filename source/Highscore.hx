@@ -14,26 +14,31 @@ class Highscore
 	{
 		var daSong:String = formatSong(song, diff);
 
-		if (songScores.exists(daSong))
+		if (!PlayState.practiceMode)
 		{
-			if (songScores.get(daSong) < score)
+			if (songScores.exists(daSong))
+			{
+				if (songScores.get(daSong) < score)
+					setScore(daSong, score);
+			}
+			else
 				setScore(daSong, score);
 		}
-		else
-			setScore(daSong, score);
 	}
 
 	public static function saveWeekScore(week:Int = 1, score:Int = 0, ?diff:Int = 0):Void
 	{
 		var daWeek:String = formatSong('week' + week, diff);
-
-		if (songScores.exists(daWeek))
+		if (!PlayState.practiceMode)
 		{
-			if (songScores.get(daWeek) < score)
+			if (songScores.exists(daWeek))
+			{
+				if (songScores.get(daWeek) < score)
+					setScore(daWeek, score);
+			}
+			else
 				setScore(daWeek, score);
 		}
-		else
-			setScore(daWeek, score);
 	}
 
 	/**
