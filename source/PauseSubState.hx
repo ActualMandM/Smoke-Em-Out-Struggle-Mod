@@ -36,7 +36,7 @@ class PauseSubState extends MusicBeatSubstate
 		super();
 
 		if (PlayState.isStoryMode)
-			pauseOG = ["Resume", "Restart Song", "Change Difficulty", "Exit to menu"];
+			pauseOG = ["Resume", "Restart Song", "Exit to menu"];
 
 		menuItems = pauseOG;
 
