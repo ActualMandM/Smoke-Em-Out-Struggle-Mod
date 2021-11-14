@@ -155,16 +155,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
-		// HARD CODING CUZ IM STUPDI
-		if (PlayState.SONG.song.toLowerCase() == 'roses')
-			portraitLeft.visible = false;
-		if (PlayState.SONG.song.toLowerCase() == 'thorns')
-		{
-			portraitLeft.color = FlxColor.BLACK;
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		else if (PlayState.SONG.song.toLowerCase() == 'headache' || PlayState.SONG.song.toLowerCase() == 'nerves')
+		if (PlayState.SONG.song.toLowerCase() == 'headache' || PlayState.SONG.song.toLowerCase() == 'nerves')
 		{
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
@@ -209,9 +200,7 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					isEnding = true;
 
-					if (PlayState.SONG.song.toLowerCase() == 'senpai'
-						|| PlayState.SONG.song.toLowerCase() == 'thorns'
-						|| PlayState.SONG.song.toLowerCase() == 'fading')
+					if (PlayState.SONG.song.toLowerCase() == 'fading')
 						FlxG.sound.music.fadeOut(2.2, 0);
 
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
