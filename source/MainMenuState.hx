@@ -82,7 +82,6 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
-			menuItem.animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
@@ -102,6 +101,11 @@ class MainMenuState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		FlxG.camera.followLerp = CoolUtil.camLerpShit(0.06);
+
+		menuItems.forEach(function(spr:FlxSprite)
+		{
+			spr.animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
+		});
 
 		if (FlxG.sound.music.volume < 0.8)
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;

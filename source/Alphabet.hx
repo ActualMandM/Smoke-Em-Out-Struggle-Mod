@@ -255,7 +255,6 @@ class AlphaCharacter extends FlxSprite
 	{
 		animation.addByPrefix(letter, letter.toUpperCase() + " bold", 24);
 		animation.play(letter);
-		animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
 		updateHitbox();
 	}
 
@@ -269,7 +268,6 @@ class AlphaCharacter extends FlxSprite
 
 		animation.addByPrefix(letter, letter + " " + letterCase, 24);
 		animation.play(letter);
-		animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
 		updateHitbox();
 
 		FlxG.log.add('the row' + row);
@@ -282,7 +280,6 @@ class AlphaCharacter extends FlxSprite
 	{
 		animation.addByPrefix(letter, letter, 24);
 		animation.play(letter);
-		animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
 
 		updateHitbox();
 	}
@@ -310,5 +307,11 @@ class AlphaCharacter extends FlxSprite
 		animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
 
 		updateHitbox();
+	}
+
+	override function update(elapsed:Float)
+	{
+		animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
+		super.update(elapsed);
 	}
 }
