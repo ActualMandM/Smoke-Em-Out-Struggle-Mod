@@ -66,11 +66,11 @@ class Character extends FlxSprite
 				// GARCELLO ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('garcello_assets');
 				frames = tex;
-				animation.addByPrefix('idle', 'garcello idle dance', 24);
-				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24);
-				animation.addByPrefix('singRIGHT', 'garcello Sing Note RIGHT', 24);
-				animation.addByPrefix('singDOWN', 'garcello Sing Note DOWN', 24);
-				animation.addByPrefix('singLEFT', 'garcello Sing Note LEFT', 24);
+				animation.addByPrefix('idle', 'garcello idle dance', 24, false);
+				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'garcello Sing Note RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'garcello Sing Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'garcello Sing Note LEFT', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP", 0, 0);
@@ -111,13 +111,13 @@ class Character extends FlxSprite
 				// GARCELLO DEAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('garcellodead_assets');
 				frames = tex;
-				animation.addByPrefix('idle', 'garcello idle dance', 24);
-				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24);
-				animation.addByPrefix('singRIGHT', 'garcello Sing Note RIGHT', 24);
-				animation.addByPrefix('singDOWN', 'garcello Sing Note DOWN', 24);
-				animation.addByPrefix('singLEFT', 'garcello Sing Note LEFT', 24);
+				animation.addByPrefix('idle', 'garcello idle dance', 24, false);
+				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'garcello Sing Note RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'garcello Sing Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'garcello Sing Note LEFT', 24, false);
 
-				animation.addByPrefix('garTightBars', 'garcello coolguy', 15);
+				animation.addByPrefix('garTightBars', 'garcello coolguy', 15, false);
 
 				addOffset('idle');
 				addOffset("singUP", 0, 0);
@@ -132,13 +132,13 @@ class Character extends FlxSprite
 				// GARCELLO DEAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('garcelloghosty_assets');
 				frames = tex;
-				animation.addByPrefix('idle', 'garcello idle dance', 24);
-				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24);
-				animation.addByPrefix('singRIGHT', 'garcello Sing Note RIGHT', 24);
-				animation.addByPrefix('singDOWN', 'garcello Sing Note DOWN', 24);
-				animation.addByPrefix('singLEFT', 'garcello Sing Note LEFT', 24);
+				animation.addByPrefix('idle', 'garcello idle dance', 24, false);
+				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'garcello Sing Note RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'garcello Sing Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'garcello Sing Note LEFT', 24, false);
 
-				animation.addByPrefix('garFarewell', 'garcello coolguy', 15);
+				animation.addByPrefix('garFarewell', 'garcello coolguy', 15, false);
 
 				addOffset('idle');
 				addOffset("singUP", 0, 0);
