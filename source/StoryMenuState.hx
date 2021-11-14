@@ -196,9 +196,9 @@ class StoryMenuState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		// scoreText.setFormat('VCR OSD Mono', 32);
-		lerpScore = Std.int(Math.round(CoolUtil.coolLerp(lerpScore, intendedScore, 0.5)));
+		lerpScore = CoolUtil.coolLerp(lerpScore, intendedScore, 0.5);
 
-		scoreText.text = "WEEK SCORE:" + lerpScore;
+		scoreText.text = "WEEK SCORE:" + Math.round(lerpScore);
 
 		txtWeekTitle.text = weekNames[curWeek].toUpperCase();
 		txtWeekTitle.x = FlxG.width - (txtWeekTitle.width + 10);
@@ -338,8 +338,8 @@ class StoryMenuState extends MusicBeatState
 		FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: 1}, 0.07);
 	}
 
-	var lerpScore:Int = 0;
-	var intendedScore:Int = 0;
+	var lerpScore:Float = 0;
+	var intendedScore:Float = 0;
 
 	function changeWeek(change:Int = 0):Void
 	{
@@ -381,7 +381,7 @@ class StoryMenuState extends MusicBeatState
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 0.5));
 
 			default:
-				grpWeekCharacters.members[0].offset.set(100, 100);
+				grpWeekCharacters.members[0].offset.set(100, 200);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
 		}
 

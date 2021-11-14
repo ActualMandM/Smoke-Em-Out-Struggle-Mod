@@ -26,8 +26,8 @@ class FreeplayState extends MusicBeatState
 
 	var scoreText:FlxText;
 	var diffText:FlxText;
-	var lerpScore:Int = 0;
-	var intendedScore:Int = 0;
+	var lerpScore:Float = 0;
+	var intendedScore:Float = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
@@ -151,9 +151,9 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		lerpScore = Std.int(Math.round(CoolUtil.coolLerp(lerpScore, intendedScore, 0.4)));
+		lerpScore = CoolUtil.coolLerp(lerpScore, intendedScore, 0.4);
 
-		scoreText.text = "PERSONAL BEST:" + lerpScore;
+		scoreText.text = "PERSONAL BEST:" + Math.round(lerpScore);
 
 		var upP = controls.UP_P;
 		var downP = controls.DOWN_P;
