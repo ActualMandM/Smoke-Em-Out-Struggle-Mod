@@ -971,6 +971,7 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
+		scoreTxt.visible = !practiceMode;
 		scoreTxt.text = "Score:" + songScore;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
@@ -1232,7 +1233,8 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-		seenCutscene = true;
+		practiceMode = false;
+		seenCutscene = false;
 		deathCounter = 0;
 		canPause = false;
 		FlxG.sound.music.volume = 0;

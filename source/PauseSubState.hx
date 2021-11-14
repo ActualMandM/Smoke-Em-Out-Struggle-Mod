@@ -35,6 +35,9 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		super();
 
+		if (PlayState.isStoryMode)
+			pauseOG = ["Resume", "Restart Song", "Change Difficulty", "Exit to menu"];
+
 		menuItems = pauseOG;
 
 		pauseMusic = new FlxSound().loadEmbedded(Paths.music('breakfast'), true, true);
@@ -145,6 +148,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.practiceMode = !PlayState.practiceMode;
 					practiceText.visible = PlayState.practiceMode;
 				case "Exit to menu":
+					PlayState.practiceMode = false;
 					PlayState.seenCutscene = false;
 					PlayState.deathCounter = 0;
 					if (PlayState.isStoryMode)
