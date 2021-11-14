@@ -196,7 +196,7 @@ class StoryMenuState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		// scoreText.setFormat('VCR OSD Mono', 32);
-		lerpScore = Std.int(CoolUtil.coolLerp(lerpScore, intendedScore, 0.5));
+		lerpScore = Std.int(Math.round(CoolUtil.coolLerp(lerpScore, intendedScore, 0.5)));
 
 		scoreText.text = "WEEK SCORE:" + lerpScore;
 

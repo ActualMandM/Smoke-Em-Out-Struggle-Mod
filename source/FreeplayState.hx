@@ -151,7 +151,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		lerpScore = Std.int(CoolUtil.coolLerp(lerpScore, intendedScore, 0.4));
+		lerpScore = Std.int(Math.round(CoolUtil.coolLerp(lerpScore, intendedScore, 0.4)));
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
 
