@@ -163,13 +163,13 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase())
 		{
 			case 'headache':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('headache/headacheDialogue'));
+				dialogue = CoolUtil.coolTextFile(Paths.txt('data/headache/headacheDialogue'));
 			case 'nerves':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('nerves/nervesDialogue'));
+				dialogue = CoolUtil.coolTextFile(Paths.txt('data/nerves/nervesDialogue'));
 			case 'release':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('release/releaseDialogue'));
+				dialogue = CoolUtil.coolTextFile(Paths.txt('data/release/releaseDialogue'));
 			case 'fading':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('fading/fadingDialogue'));
+				dialogue = CoolUtil.coolTextFile(Paths.txt('data/fading/fadingDialogue'));
 		}
 
 		#if desktop
