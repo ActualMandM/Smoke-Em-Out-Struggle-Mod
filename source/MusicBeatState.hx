@@ -29,6 +29,8 @@ class MusicBeatState extends FlxUIState
 
 	override function update(elapsed:Float)
 	{
+		openfl.Lib.current.stage.frameRate = lime.app.Application.current.window.displayMode.refreshRate;
+
 		// everyStep();
 		var oldStep:Int = curStep;
 
