@@ -265,7 +265,7 @@ class TitleState extends MusicBeatState
 			#end
 		}
 
-		if (pressedEnter && !transitioning && skippedIntro)
+		if (pressedEnter && !transitioning && skippedIntro && !initialized)
 		{
 			#if !switch
 			NGio.unlockMedal(60960);
