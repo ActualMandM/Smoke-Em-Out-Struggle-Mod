@@ -216,16 +216,6 @@ class StoryMenuState extends MusicBeatState
 		{
 			if (!selectedWeek)
 			{
-				if (controls.UP_P)
-				{
-					changeWeek(-1);
-				}
-
-				if (controls.DOWN_P)
-				{
-					changeWeek(1);
-				}
-
 				if (controls.RIGHT)
 					rightArrow.animation.play('press')
 				else
@@ -331,41 +321,13 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty.y = leftArrow.y - 15;
 		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
 
-		#if !switch
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
-		#end
+		FlxG.sound.play(Paths.sound('scrollMenu'));
 
 		FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: 1}, 0.07);
 	}
 
 	var lerpScore:Float = 0;
 	var intendedScore:Float = 0;
-
-	function changeWeek(change:Int = 0):Void
-	{
-		curWeek += change;
-
-		if (curWeek >= weekData.length)
-			curWeek = 0;
-		if (curWeek < 0)
-			curWeek = weekData.length - 1;
-
-		var bullShit:Int = 0;
-
-		for (item in grpWeekText.members)
-		{
-			item.targetY = bullShit - curWeek;
-			if (item.targetY == Std.int(0) && weekUnlocked[curWeek])
-				item.alpha = 1;
-			else
-				item.alpha = 0.6;
-			bullShit++;
-		}
-
-		FlxG.sound.play(Paths.sound('scrollMenu'));
-
-		updateText();
-	}
 
 	function updateText()
 	{
