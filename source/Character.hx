@@ -32,7 +32,7 @@ class Character extends FlxSprite
 		{
 			case 'gf':
 				// GIRLFRIEND CODE
-				tex = Paths.getSparrowAtlas('GF_assets');
+				tex = Paths.getSparrowAtlas('characters/GF_assets');
 				frames = tex;
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
 				animation.addByPrefix('singLEFT', 'GF left note', 24, false);
@@ -64,7 +64,7 @@ class Character extends FlxSprite
 
 			case 'garcello':
 				// GARCELLO ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('garcello_assets');
+				tex = Paths.getSparrowAtlas('characters/garcello_assets');
 				frames = tex;
 				animation.addByPrefix('idle', 'garcello idle dance', 24, false);
 				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24, false);
@@ -82,7 +82,7 @@ class Character extends FlxSprite
 
 			case 'garcellotired':
 				// GARCELLO TIRED ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('garcellotired_assets');
+				tex = Paths.getSparrowAtlas('characters/garcellotired_assets');
 				frames = tex;
 				animation.addByPrefix('idle', 'garcellotired idle dance', 24, false);
 				animation.addByPrefix('singUP', 'garcellotired Sing Note UP', 24, false);
@@ -109,7 +109,7 @@ class Character extends FlxSprite
 
 			case 'garcellodead':
 				// GARCELLO DEAD ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('garcellodead_assets');
+				tex = Paths.getSparrowAtlas('characters/garcellodead_assets');
 				frames = tex;
 				animation.addByPrefix('idle', 'garcello idle dance', 24, false);
 				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24, false);
@@ -130,7 +130,7 @@ class Character extends FlxSprite
 
 			case 'garcelloghosty':
 				// GARCELLO DEAD ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('garcelloghosty_assets');
+				tex = Paths.getSparrowAtlas('characters/garcelloghosty_assets');
 				frames = tex;
 				animation.addByPrefix('idle', 'garcello idle dance', 24, false);
 				animation.addByPrefix('singUP', 'garcello Sing Note UP', 24, false);
@@ -150,7 +150,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'bf':
-				var tex = Paths.getSparrowAtlas('BOYFRIEND');
+				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND');
 				frames = tex;
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);

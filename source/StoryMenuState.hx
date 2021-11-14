@@ -377,11 +377,11 @@ class StoryMenuState extends MusicBeatState
 		switch (grpWeekCharacters.members[0].animation.curAnim.name)
 		{
 			case 'garcello':
-				grpWeekCharacters.members[0].offset.set(120, 100);
+				grpWeekCharacters.members[0].offset.set(120, 200);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 0.5));
 
 			default:
-				grpWeekCharacters.members[0].offset.set(100, 200);
+				grpWeekCharacters.members[0].offset.set(100, 100);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
 		}
 
