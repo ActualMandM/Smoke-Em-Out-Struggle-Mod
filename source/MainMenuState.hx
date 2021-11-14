@@ -24,13 +24,8 @@ class MainMenuState extends MusicBeatState
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
-	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate'];
-	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
-	#end
 
-	var menuItem:FlxSprite;
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
@@ -82,11 +77,12 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
-			menuItem = new FlxSprite(0, 60 + (i * 160));
+			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
 			menuItem.frames = tex;
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
+			menuItem.animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
@@ -95,13 +91,6 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollow, null, 0.06);
-
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "v" + Application.current.meta.get('version'), 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-
-		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
 
@@ -113,12 +102,9 @@ class MainMenuState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		FlxG.camera.followLerp = CoolUtil.camLerpShit(0.06);
-		menuItem.animation.curAnim.frameRate = CoolUtil.camLerpShit(24);
 
 		if (FlxG.sound.music.volume < 0.8)
-		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
-		}
 
 		if (!selectedSomethin)
 		{
