@@ -46,19 +46,7 @@ class Character extends FlxSprite
 				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
-				addOffset('cheer');
-				addOffset('sad', -2, -2);
-				addOffset('danceLeft', 0, -9);
-				addOffset('danceRight', 0, -9);
-
-				addOffset("singUP", 0, 4);
-				addOffset("singRIGHT", 0, -20);
-				addOffset("singLEFT", 0, -19);
-				addOffset("singDOWN", 0, -20);
-				addOffset('hairBlow', 45, -8);
-				addOffset('hairFall', 0, -9);
-
-				addOffset('scared', -2, -17);
+				loadOffsetFile(curCharacter);
 
 				playAnim('danceRight');
 
@@ -72,11 +60,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'garcello Sing Note DOWN', 24, false);
 				animation.addByPrefix('singLEFT', 'garcello Sing Note LEFT', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", 0, 0);
-				addOffset("singRIGHT", 0, 0);
-				addOffset("singLEFT", 0, 0);
-				addOffset("singDOWN", 0, 0);
+				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
 
@@ -95,15 +79,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT-alt', 'garcellotired Sing Note LEFT', 24, false);
 				animation.addByPrefix('singDOWN-alt', 'garcellotired cough', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", 0, 0);
-				addOffset("singRIGHT", 0, 0);
-				addOffset("singLEFT", 0, 0);
-				addOffset("singDOWN", 0, 0);
-				addOffset("singUP-alt", 0, 0);
-				addOffset("singRIGHT-alt", 0, 0);
-				addOffset("singLEFT-alt", 0, 0);
-				addOffset("singDOWN-alt", 0, 0);
+				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
 
@@ -119,12 +95,7 @@ class Character extends FlxSprite
 
 				animation.addByPrefix('garTightBars', 'garcello coolguy', 15, false);
 
-				addOffset('idle');
-				addOffset("singUP", 0, 0);
-				addOffset("singRIGHT", 0, 0);
-				addOffset("singLEFT", 0, 0);
-				addOffset("singDOWN", 0, 0);
-				addOffset("garTightBars", 0, 0);
+				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
 
@@ -140,12 +111,7 @@ class Character extends FlxSprite
 
 				animation.addByPrefix('garFarewell', 'garcello coolguy', 15, false);
 
-				addOffset('idle');
-				addOffset("singUP", 0, 0);
-				addOffset("singRIGHT", 0, 0);
-				addOffset("singLEFT", 0, 0);
-				addOffset("singDOWN", 0, 0);
-				addOffset("garTightBars", 0, 0);
+				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
 
@@ -169,20 +135,7 @@ class Character extends FlxSprite
 
 				animation.addByPrefix('scared', 'BF idle shaking', 24);
 
-				addOffset('idle', -5);
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
-				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
-				addOffset("singLEFTmiss", 12, 24);
-				addOffset("singDOWNmiss", -11, -19);
-				addOffset("hey", 7, 4);
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -4);
+				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
 
@@ -211,6 +164,17 @@ class Character extends FlxSprite
 					animation.getByName('singLEFTmiss').frames = oldMiss;
 				}
 			}
+		}
+	}
+
+	public function loadOffsetFile(character:String)
+	{
+		var offset:Array<String> = CoolUtil.coolTextFile(Paths.txt('images/characters/' + character + "Offsets"));
+
+		for (i in 0...offset.length)
+		{
+			var data:Array<String> = offset[i].split(' ');
+			addOffset(data[0], Std.parseInt(data[1]), Std.parseInt(data[2]));
 		}
 	}
 
